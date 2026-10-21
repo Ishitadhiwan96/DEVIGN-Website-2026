@@ -1,0 +1,23 @@
+/* SHARED: antigravity effect (canvas dust, levitating cards, zero-g reveal, HUD) */
+#ag-canvas{position:fixed;inset:0;z-index:20;pointer-events:none}
+@keyframes ag-levitate{
+  0%,100%{translate:var(--rx,0px) calc(var(--ry,0px) + 0px);rotate:0deg}
+  50%{translate:var(--rx,0px) calc(var(--ry,0px) - var(--amp,8px));rotate:.25deg}
+}
+.ag-float{animation:ag-levitate 6s ease-in-out var(--d,0s) infinite;
+  transition:opacity .9s ease,filter .9s ease,scale 1s var(--ease-expo),transform .22s var(--ease-elastic),box-shadow .35s ease,border-color .35s ease}
+.ag-pre{opacity:0;filter:blur(8px);scale:.92}
+.ag-in{opacity:1;filter:blur(0);scale:1}
+body.ag-grounded .ag-float{animation-play-state:paused}
+#ag-hud{position:fixed;left:16px;bottom:16px;z-index:60;display:flex;align-items:center;gap:8px;padding:8px 12px;
+  background:rgba(9,9,11,.85);backdrop-filter:blur(8px);border:1px solid rgba(96,165,250,.35);border-radius:4px;
+  font:600 10px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:none;color:#bfdbfe;cursor:pointer;
+  box-shadow:0 0 18px rgba(37,99,235,.35);transition:border-color .25s,box-shadow .25s}
+#ag-hud:hover{border-color:#00ff87;box-shadow:0 0 18px rgba(0,255,135,.4)}
+#ag-hud b{color:#00ff87;animation:ag-blink 1s steps(1) infinite}
+@keyframes ag-blink{50%{opacity:0}}
+#ag-hud i{width:6px;height:6px;border-radius:9999px;background:#00ff87;box-shadow:0 0 8px #00ff87;animation:orbitSpinCW 2s linear infinite}
+body.ag-grounded #ag-hud b{color:#00ff87;animation:ag-blink 1s steps(1) infinite}
+@keyframes ag-blink{50%{opacity:0}}
+#ag-hud i{background:#f87171;box-shadow:0 0 8px #f87171}
+@media (prefers-reduced-motion:reduce){.ag-float{animation:none}}

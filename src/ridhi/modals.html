@@ -1,0 +1,40 @@
+
+<!-- LIGHTBOX MODAL DIALOG -->
+<div aria-modal="true" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md hidden items-center justify-center p-4" id="lightbox-modal" role="dialog">
+<div class="relative max-w-4xl w-full bg-[#0e0e12] border border-slate-800 rounded-DEFAULT overflow-hidden shadow-2xl modal-fade-in flex flex-col">
+<div class="flex items-center justify-between p-4 border-b border-slate-800 bg-[#131317]">
+<div class="flex flex-col">
+<h4 class="font-headline-sm text-base text-white font-bold" id="lightbox-caption">Moment</h4>
+<span class="font-label-mono-sm text-xs text-blue-400" id="lightbox-date">Date</span>
+</div>
+<button aria-label="Close Lightbox" class="p-1 rounded text-slate-400 hover:text-white hover:bg-white/10 transition-colors" id="lightbox-close">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+</div>
+<div class="relative bg-black flex items-center justify-center max-h-[70vh] overflow-hidden">
+<img alt="Expanded Preview" class="w-full h-auto max-h-[70vh] object-contain" id="lightbox-img" src="">
+</div>
+</div>
+</div>
+<!-- EVENT DETAILS MODAL DIALOG -->
+<div aria-modal="true" class="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md hidden items-center justify-center p-4" id="event-modal" role="dialog">
+<div class="relative max-w-lg w-full bg-[#0e0e12] border border-blue-900/60 rounded-DEFAULT p-6 shadow-2xl modal-fade-in flex flex-col gap-4">
+<div class="flex items-start justify-between border-b border-slate-800 pb-3">
+<div>
+<span class="px-2 py-0.5 rounded bg-blue-950 border border-blue-500/40 text-blue-300 font-label-mono-sm text-[10px] uppercase font-bold" id="modal-event-mode">Mode</span>
+<h3 class="font-headline-lg text-xl text-white font-bold pt-1" id="modal-event-title">Event Title</h3>
+<span class="font-label-mono-sm text-xs text-blue-400" id="modal-event-date">Date</span>
+</div>
+<button aria-label="Close Event Details" class="p-1 rounded text-slate-400 hover:text-white hover:bg-white/10 transition-colors" id="event-modal-close">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+</div>
+<p class="font-body-base text-sm text-blue-100/90 leading-relaxed" id="modal-event-desc">
+      Detailed description will appear here.
+    </p>
+<div class="pt-3 border-t border-slate-800 flex items-center justify-end gap-3">
+<button class="px-4 py-2 rounded bg-slate-800 hover:bg-slate-700 text-white font-label-tech text-xs uppercase" id="event-modal-cancel">Close</button>
+<a class="px-5 py-2 rounded bg-blue-600 hover:bg-blue-500 text-white font-headline-sm text-xs uppercase font-semibold" href="#contact">Register / Connect</a>
+</div>
+</div>
+</div>

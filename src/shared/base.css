@@ -1,0 +1,165 @@
+/* SHARED: tokens, cursor, spotlight, keyframes (everyone) */
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #09090b;
+    color: #ffffff;
+    cursor: default;
+    overflow-x: hidden;
+  }
+}
+::-webkit-scrollbar { display: none; }
+
+/* Motion & Easing Tokens */
+:root {
+  --ease-elastic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes orb-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(24px, -20px, 0) scale(1.08); }
+  66% { transform: translate3d(-20px, 16px, 0) scale(0.94); }
+}
+
+@keyframes timeline-pulse-laser {
+  0% { transform: translateY(-100%); opacity: 0; }
+  25% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateY(900%); opacity: 0; }
+}
+
+@keyframes holographic-sweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes orbitSpinCW {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes orbitSpinCCW {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes soundwave-pulse {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+.holographic-scanner {
+  background: linear-gradient(90deg, #ffffff 0%, #93c5fd 25%, #60a5fa 45%, #ffffff 50%, #3b82f6 70%, #ffffff 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: holographic-sweep 7s linear infinite;
+}
+
+.gsap-tilt-card {
+  transition: transform 0.22s var(--ease-elastic), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.gsap-tilt-card:hover {
+  border-color: rgba(96, 165, 250, 0.5) !important;
+  box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.35);
+}
+
+.shimmer-card {
+  position: relative;
+  background: #0e0e12;
+}
+
+.kinetic-heading-shimmer {
+  background: linear-gradient(90deg, #60a5fa 0%, #ffffff 25%, #3b82f6 50%, #93c5fd 75%, #2563eb 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: holographic-sweep 6s linear infinite;
+}
+
+/* Lightbox & Modal animation */
+.modal-fade-in {
+  animation: modalFadeIn 0.25s ease-out forwards;
+}
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Custom Interactive Cursor & Kinetic Follower Styles */
+@media (pointer: fine) {
+  body, a, button, [role="button"], input, select, textarea {
+    cursor: none !important;
+  }
+}
+
+#custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #60a5fa;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px #3b82f6, 0 0 20px #60a5fa;
+  transition: opacity 0.2s ease, transform 0.08s ease;
+  will-change: transform;
+}
+
+#custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid rgba(96, 165, 250, 0.7);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.03) 60%, transparent 100%);
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.28s var(--ease-elastic), height 0.28s var(--ease-elastic), border-color 0.28s ease, background-color 0.28s ease, opacity 0.3s ease;
+  box-shadow: 0 0 22px rgba(37, 99, 235, 0.35);
+  will-change: transform, width, height;
+}
+
+/* Follower states */
+#custom-cursor-follower.cursor-hover {
+  width: 62px;
+  height: 62px;
+  border-color: rgba(147, 197, 253, 0.95);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(96, 165, 250, 0.12) 65%, transparent 100%);
+  box-shadow: 0 0 35px rgba(59, 130, 246, 0.65), inset 0 0 14px rgba(96, 165, 250, 0.3);
+}
+
+#custom-cursor-follower.cursor-active {
+  transform: translate(-50%, -50%) scale(0.85);
+  border-color: #ffffff;
+  background-color: rgba(96, 165, 250, 0.4);
+}
+
+#custom-cursor-dot.cursor-active {
+  transform: translate(-50%, -50%) scale(1.6);
+  background-color: #ffffff;
+  box-shadow: 0 0 16px #ffffff, 0 0 28px #3b82f6;
+}
+
+/* Mouse spotlight glow tracker */
+#mouse-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 700px;
+  height: 700px;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(96, 165, 250, 0.05) 35%, transparent 70%);
+  transition: opacity 0.4s ease;
+  will-change: transform;
+}
