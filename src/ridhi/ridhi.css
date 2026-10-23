@@ -1,1 +1,141 @@
 /* RIDHI: what-we-do + projects + gallery styles */
+/* ==========================================================================
+   1. CORE TYPOGRAPHY & UTILITIES
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+.font-label-tech {
+  font-family: 'JetBrains Mono', monospace, sans-serif;
+  letter-spacing: 0.1em;
+}
+
+.font-body-mono {
+  font-family: 'Fira Code', monospace, sans-serif;
+}
+
+/* Kinetic Heading Shimmer Effect */
+.kinetic-heading-shimmer {
+  background: linear-gradient(90deg, #ffffff 0%, #93c5fd 50%, #ffffff 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* ==========================================================================
+   2. GALLERY & BENTO GRID STYLES
+   ========================================================================== */
+.gallery-item {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.gallery-item:hover {
+  border-color: rgba(59, 130, 246, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(59, 130, 246, 0.1);
+}
+
+.gallery-item img {
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+/* Filter Button Styling */
+.event-filter-btn {
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.event-filter-btn:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   3. LIGHTBOX & EVENT MODALS
+   ========================================================================== */
+#lightbox-modal,
+#event-modal {
+  transition: opacity 0.25s ease-in-out;
+}
+
+#lightbox-modal:not(.hidden),
+#event-modal:not(.hidden) {
+  animation: modalFadeIn 0.2s ease-out forwards;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#lightbox-img {
+  user-select: none;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   4. CORE DOMAINS ("WHAT WE DO") & PROJECT CARDS
+   ========================================================================== */
+.domain-card,
+.project-card {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.domain-card:hover,
+.project-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.4);
+}
+
+.domain-card .material-symbols-outlined {
+  transition: transform 0.2s ease-in-out;
+}
+
+.domain-card:hover .material-symbols-outlined {
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   5. COUNTDOWN PILL & EVENT TIMERS
+   ========================================================================== */
+#devcon-countdown {
+  font-family: 'JetBrains Mono', monospace, sans-serif;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom Scrollbar for Modals */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e0e12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
